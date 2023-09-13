@@ -16,4 +16,3 @@ if st.button("Correct"):
   corrected = correct_transcription(result)
   correct_transcription(result, corrected)
 
-st.write("OK")
