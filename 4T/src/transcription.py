@@ -17,8 +17,7 @@ def transcribe_video(video_filename):
 
   transcription = transcribe_audio(audio_filename)
   
-  # Clean up
-  os.remove(audio_filename)
+
   
   return transcription
 
