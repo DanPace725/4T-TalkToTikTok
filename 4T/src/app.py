@@ -33,17 +33,17 @@ if st.button("Transcribe"):
     st.error("Failed to download video.")     
   
 
-  if st.button("Correct Transcription"):
-    with st.spinner("Correcting Transcription"):
-        corrected_trans = correct_transcription(transcription)
-        st.subheader("Corrected Transcription:")
-        st.write(corrected_trans)
-        with open("corrected_transcript.md", "w") as f:
-          f.write(corrected_trans)
+if st.button("Correct Transcription"):
+  with st.spinner("Correcting Transcription"):
+      corrected_trans = correct_transcription(transcription)
+      st.subheader("Corrected Transcription:")
+      st.write(corrected_trans)
+      with open("corrected_transcript.md", "w") as f:
+        f.write(corrected_trans)
 
-        st.download_button(
-          label="Download Corrected Transcript",
-          data="corrected_transcript.md",
-          file_name= video_filename + "_corrected_transcript.md",
-          mime="text/markdown",
-        )
+      st.download_button(
+        label="Download Corrected Transcript",
+        data="corrected_transcript.md",
+        file_name= video_filename + "_corrected_transcript.md",
+        mime="text/markdown",
+      )
