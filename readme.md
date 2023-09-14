@@ -40,7 +40,7 @@
 
 1. Start the Streamlit app:
    ```
-   streamlit run /src/app.py
+   streamlit run src/app.py
    ```
 
 2. Open the provided link in your browser.
