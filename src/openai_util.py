@@ -2,6 +2,7 @@
 
 import openai 
 import os
+import shutil
 
 openai.api_key = os.getenv("OPENAI_API_KEY") 
 
@@ -24,3 +25,16 @@ def correct_transcription(transcription):
     ]
   )
   return response['choices'][0]['message']['content']
+
+def move_file(src, filetype):
+    if filetype == 'mp4':
+        dst = '../media/video/'
+    elif filetype == 'mp3':
+        dst = '../media/audio/'
+    elif filetype == 'md':
+        dst = '../media/text/'
+    else:
+        print(f"Unsupported file type: {filetype}")
+        return
+
+    shutil.move(src, dst)
