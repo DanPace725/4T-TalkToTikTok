@@ -22,7 +22,7 @@ if st.button("Transcribe"):
 
             st.subheader("Transcription:")
             st.write(corrected_trans)
-            with open("transcript.md", "w") as f:
+            with open(video_filename + "transcript.md", "w") as f:
                 f.write(corrected_trans)
 
             st.download_button(

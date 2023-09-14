@@ -34,20 +34,20 @@
    export OPENAI_API_KEY='your_api_key_here'
    ```
 
-5. Ensure you have `ffmpeg` installed and accessible from the command line.
+5. Ensure you have `ffmpeg` installed and accessible from the command line. If you're not sure how to do this you can check out this link [here](https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/). 
 
 ## Usage
 
 1. Start the Streamlit app:
    ```
-   streamlit run 4T/src/app.py
+   streamlit run /src/app.py
    ```
 
 2. Open the provided link in your browser.
 
 3. Input a TikTok video URL and click on "Transcribe" to get the transcription.
 
-4. Optionally, click on "Correct" to correct the transcription using the GPT-3.5-turbo model.
+4. Click on "Download Transcript" to download the transcript in Markdown.
 
 ## Contributing
 
