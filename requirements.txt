@@ -1,4 +1,4 @@
-pyktok
+git+https://github.com/DanPace725/pyktok.git
 openai
 BeautifulSoup4
 browser-cookie3
