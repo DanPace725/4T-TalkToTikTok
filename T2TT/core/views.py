@@ -11,13 +11,19 @@ def download_and_transcribe_view(request):
         
         # Download the video
         video_filename = download_video(video_url)
+        if not video_filename:
+            return render(request, 'download.html', {'error': 'Failed to download video'})
         
         # Convert video to audio
         audio_filename = f"{video_filename}_audio.mp3"
-        audio_file = convert_to_audio(video_filename, audio_filename)  # Assuming this function returns the audio filename
-        
+
+        success = convert_to_audio(video_filename, audio_filename)  # Assuming this function returns the audio filename
+        if not success:
+            return render(request, 'download.html', {'error': 'Failed to convert video to audio.'})
         # Transcribe the audio
-        transcription = transcribe_audio(audio_file)
+        transcription = transcribe_audio(audio_filename)
+        if not transcription:
+            return render(request, 'download.html', {'error': 'Failed to transcribe audio.'})
         
         # Save the results in the model
         video_transcription = VideoTranscription.objects.create(
