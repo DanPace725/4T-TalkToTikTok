@@ -8,7 +8,7 @@ def download_video(url):
   """Download video from URL using pyktok"""
   
   try:
-    save_tiktok(url, True, "../metadata/data.csv", "chrome")
+    save_tiktok(url, True, "metadata.csv", "chrome")
     regex_url = re.findall(r'https://www.tiktok.com/(.*?)\?', url)[0]
     saved_filename = regex_url.replace('/','_') + '.mp4'
     return saved_filename 

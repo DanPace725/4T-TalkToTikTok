@@ -8,3 +8,5 @@ Requests
 Selenium
 Streamlit
 webdriver-manager
+django
+regex
