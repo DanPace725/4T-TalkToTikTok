@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="url" placeholder="Enter TikTok URL">
+    <button type="submit">Download</button>
+</form>
+<p>{{ message }}</p>
