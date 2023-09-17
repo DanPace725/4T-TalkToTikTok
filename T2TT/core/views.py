@@ -1,5 +1,5 @@
 # core/views.py
-
+import os
 from django.shortcuts import render, redirect
 from .models import VideoTranscription
 from .utils import download_video, convert_to_audio
@@ -12,7 +12,7 @@ def download_and_transcribe_view(request):
         # Download the video
         video_filename = download_video(video_url)
         if not video_filename:
-            return render(request, 'download.html', {'error': 'Failed to download video'})
+            return render(request, 'error.html', {'error': 'Failed to download video'})
         
         # Convert video to audio
         audio_filename = f"{video_filename}_audio.mp3"
@@ -24,6 +24,11 @@ def download_and_transcribe_view(request):
         transcription = transcribe_audio(audio_filename)
         if not transcription:
             return render(request, 'download.html', {'error': 'Failed to transcribe audio.'})
+        # Write the transcription to a markdown file
+        transcripts_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "transcripts")
+        md_filename = os.path.join(transcripts_dir, f"{os.path.basename(audio_filename)}.md")
+        with open(md_filename, 'w') as md_file:
+            md_file.write(transcription)
         
         # Save the results in the model
         video_transcription = VideoTranscription.objects.create(
@@ -33,7 +38,7 @@ def download_and_transcribe_view(request):
         )
         
         # Redirect to a success page or display the transcription (based on your design)
-        return redirect(request, 'success.html')
+        return redirect('success')
 
     return render(request, 'download.html')
 
@@ -51,3 +56,6 @@ def home_view(request):
 
 def success_view(request):
     return render(request, 'success.html')
+
+def error_view(request):
+    return render(request, 'error.html')

@@ -18,6 +18,10 @@
         margin: 10px;
         font-size: 1.2em;
     }
+    /* Added a specific style for input to make it twice as long */
+    input[type="text"] {
+        width: 300%;
+    }
 </style>
 <form method="post">
     {% csrf_token %}

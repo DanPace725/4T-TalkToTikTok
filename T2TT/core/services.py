@@ -13,7 +13,7 @@ def transcribe_audio(audio_file):
         model="whisper-1", 
         response_format="text"
       )
-    return response
+      return response
   except openai.error.OpenAIError as e:
     error_string = (f"Failed to transcribe audio: {e}")
     return error_string
