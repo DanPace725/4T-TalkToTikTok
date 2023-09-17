@@ -33,7 +33,7 @@ def download_and_transcribe_view(request):
         )
         
         # Redirect to a success page or display the transcription (based on your design)
-        return redirect('success_page_or_other_view_name')
+        return redirect(success)
 
     return render(request, 'download.html')
 
@@ -48,3 +48,6 @@ def display_transcription_view(request, video_transcription_id):
 
 def home_view(request):
     return render(request, 'home.html')
+
+def success_view(request):
+    return render(request, 'success.html')

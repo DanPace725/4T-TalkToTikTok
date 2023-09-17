@@ -24,7 +24,8 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('download/', views.download_and_transcribe_view, name='download_and_transcribe_view'),
-    path('', views.home_view, name='home_view')
+    path('', views.home_view, name='home_view'),
+    path('success/', views.success_view, name='success'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

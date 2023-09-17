@@ -1,9 +1,14 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 text-center">
-            <h1>Talk to TikTok</h1>
-            <a href="{% url 'download_and_transcribe_view' %}" class="btn btn-primary">Proceed</a>
-        </div>
-        </div>
+<div style="background-color: #000; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div style="text-align: center;">
+        <h1>Talk to TikTok</h1>
+        <p>This application allows you to download and transcribe TikTok videos. Simply enter the URL of the video and the app will do the rest.</p>
+        <a href="{% url 'download_and_transcribe_view' %}" style="color: #fff; background-color: #000; border: 1px solid #fff; padding: 10px; text-decoration: none;">Proceed</a>
     </div>
+</div>
+<div style="text-align: center; margin-top: 20px;">
+    <h2>How it works</h2>
+    <p>1. Enter the URL of the TikTok video you want to transcribe.</p>
+    <p>2. The application will download the video and convert it to an audio file.</p>
+    <p>3. The audio file is then transcribed using advanced AI technology.</p>
+    <p>4. You will receive the transcription of the video in text format.</p>
 </div>

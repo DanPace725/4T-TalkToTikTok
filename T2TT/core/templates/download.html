@@ -1,6 +1,27 @@
+<style>
+    body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input, button {
+        margin: 10px;
+        font-size: 1.2em;
+    }
+</style>
 <form method="post">
     {% csrf_token %}
-    <input type="text" name="video_url" placeholder="Enter TikTok URL">
+    <input type="text" name="video_url" placeholder="Enter TikTok URL" style="color: #000;">
     <button type="submit">Download</button>
 </form>
 <p>{{ message }}</p>
