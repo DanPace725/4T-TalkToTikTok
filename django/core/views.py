@@ -37,8 +37,8 @@ def download_and_transcribe_view(request):
             transcription_text=transcription
         )
         
-        # Redirect to a success page or display the transcription (based on your design)
-        return redirect('success')
+        # Redirect to the transcript page instead of success page
+        return redirect('transcript')
 
     return render(request, 'download.html')
 
@@ -59,3 +59,10 @@ def success_view(request):
 
 def error_view(request):
     return render(request, 'error.html')
+
+def transcript_view(request):
+    latest_transcript = VideoTranscription.objects.latest('downloaded_at')
+    context = {
+        'transcript': latest_transcript
+    }
+    return render(request, 'transcript.html', context)
