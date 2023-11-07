@@ -19,6 +19,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views
+from core.views import video_upload
+
 
 
 urlpatterns = [
@@ -29,6 +31,7 @@ urlpatterns = [
     path('error/', views.error_view, name='error'),
     path('transcript/', views.transcript_view, name='transcript'),
     path('download_transcript/<str:filename>/', views.download_transcript_view, name='download_transcript'),
+    path('upload/', views.video_upload, name='video_upload'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

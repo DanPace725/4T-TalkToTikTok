@@ -53,10 +53,42 @@
     <div class="container">
         <h1>Transcript</h1>
         <p>{{ transcript.transcription_text }}</p>
-        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.txt' %}">Download Transcript as TXT</a>
-        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.md' %}">Download Transcript as MD</a>
-        <a href="{% url 'home_view' %}">Go back to Home</a>
+        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.txt' %}" class="btn btn-primary">Download Transcript as TXT</a>
+        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.md' %}" class="btn btn-primary">Download Transcript as MD</a>
+        <a href="{% url 'home_view' %}" class="btn btn-secondary">Go back to Home</a>
     </div>
+    <style>
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: #007bff;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        .btn:hover {
+            color: #212529;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
 </body>
 
 </html>

@@ -10,3 +10,11 @@ class VideoTranscription(models.Model):
     transcription_text = models.TextField(blank=True, null=True)
     downloaded_at = models.DateTimeField(auto_now_add=True)
     transcribed_at = models.DateTimeField(blank=True, null=True)  # Timestamp when the transcription was completed
+
+
+
+class Video(models.Model):
+    video = models.FileField(upload_to='videos/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    audio_file = models.FileField(upload_to='audio/', blank=True, null=True)
+    transcription_textundefined= models.TextField(blank=True, null=True)
