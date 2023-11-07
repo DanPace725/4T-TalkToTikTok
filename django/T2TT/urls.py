@@ -28,6 +28,7 @@ urlpatterns = [
     path('success/', views.success_view, name='success'),
     path('error/', views.error_view, name='error'),
     path('transcript/', views.transcript_view, name='transcript'),
+    path('download_transcript/<str:filename>/', views.download_transcript_view, name='download_transcript'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

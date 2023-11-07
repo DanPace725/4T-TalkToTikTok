@@ -1,6 +1,8 @@
 # core/views.py
 import os
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.core.files import File
 from .models import VideoTranscription
 from .utils import download_video, convert_to_audio
 from .services import transcribe_audio
@@ -49,6 +51,19 @@ def display_transcription_view(request, video_transcription_id):
     }
     return render(request, 'display_transcription_template.html', context)
 
+
+
+def download_transcript_view(request):
+    latest_transcript = VideoTranscription.objects.latest('downloaded_at')
+    md_filename = f"{latest_transcript.video_file}_transcript.md"
+    
+    with open(md_filename, 'r') as f:
+        file_data = f.read()
+    
+    response = HttpResponse(file_data, content_type='text/markdown')
+    response['Content-Disposition'] = f'attachment; filename="{md_filename}"'
+    
+    return response
 
 
 def home_view(request):

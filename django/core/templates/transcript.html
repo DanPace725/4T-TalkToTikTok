@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,57 @@
     <style>
         body {
             background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: Georgia, serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
+
         .container {
-            text-align: center;
+            max-width: 800px; /* Limiting the width for better readability */
+            padding: 20px;
+            background-color: #111; /* Slightly different shade for container */
+            border-radius: 10px; /* A touch of style */
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* A subtle shadow */
+        }
+
+        h1 {
+            color: #f0f0f0;
+        }
+
+        p {
+            color: #c0c0c0;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+
+        /* For devices with width less than 600px */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Transcript</h1>
         <p>{{ transcript.transcription_text }}</p>
+        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.txt' %}">Download Transcript as TXT</a>
+        <a href="{% url 'download_transcript' filename=video_filename|add:'_transcript.md' %}">Download Transcript as MD</a>
         <a href="{% url 'home_view' %}">Go back to Home</a>
     </div>
 </body>
+
 </html>
+
+
