@@ -30,7 +30,7 @@ def correct_transcription(transcription):
     model="gpt-3.5-turbo", 
     temperature=0, 
     messages=[
-      {"role": "system", "content": f"Correct this transcription, return in markdown format with line breaks:"},
+      {"role": "system", "content": f"orrect this transcription, return in markdown format with line breaks. At the end, generate 10 relevant tags with a # prefix for storing in notetaking app."},
       {"role": "user", "content": transcription}
     ]
   )
