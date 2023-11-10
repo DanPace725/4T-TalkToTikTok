@@ -11,7 +11,7 @@ def download_video(url):
   
   try:
     save_tiktok(url, True, "data.csv", "chrome")
-    regex_url = re.findall(r'https://www.tiktok.com/(.*?)\?', url)[0]
+    regex_url = re.findall(r'https://www.tiktok.com/(.*?)\?', url)
     saved_filename = regex_url.replace('/','_') + '.mp4'
     return saved_filename 
   except (subprocess.CalledProcessError, FileNotFoundError) as e:

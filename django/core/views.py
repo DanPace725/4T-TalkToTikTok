@@ -9,6 +9,9 @@ from .models import VideoTranscription
 from .utils import download_video, convert_to_audio
 from .services import transcribe_audio
 from .forms import VideoForm
+from django.http import JsonResponse
+from django.urls import reverse
+
 
 
 def download_and_transcribe_view(request):
@@ -136,9 +139,6 @@ def video_upload(request):
             video.transcription_text = transcription
             video.save()
 
-             
-            
-
             # Create a VideoTranscription object
             video_transcription = VideoTranscription.objects.create(
                 video_url=video.video.url,
@@ -150,7 +150,7 @@ def video_upload(request):
             context = {
                 'transcript': video_transcription
             }
-            return render(request, 'transcript.html', context)
+            return JsonResponse({'redirect': reverse('transcript')})
 
     else:
         form = VideoForm()
