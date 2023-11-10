@@ -1,11 +1,20 @@
 # src/video_util.py 
 
-from pyktok import save_tiktok
+
 import regex as re
+import os
 
+def save_uploaded_file(uploaded_file):
+    try:
+        with open(os.path.join('uploads', uploaded_file.name), "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        return os.path.join('uploads', uploaded_file.name)
+    except Exception as e:
+        print(e)
+        return None
 
-def download_video(url):
-  """Download video from URL using pyktok"""
+""" def download_video(url):
+  "Download video from URL using pyktok"
   
   try:
     save_tiktok(url, True, "../metadata/data.csv", "chrome")
@@ -14,5 +23,4 @@ def download_video(url):
     return saved_filename 
   except Exception as e:
     error_string = (f"Failed to download video: {e}")
-    return error_string
-  
+    return error_string """
