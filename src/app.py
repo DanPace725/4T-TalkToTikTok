@@ -56,13 +56,14 @@ if uploaded_file is not None:
 
                 st.subheader("Transcription:")
                 st.write(corrected_trans)
-                with open(video_filename + "_transcript.md", "w") as f:
+                clean_video_filename = video_filename.replace(".mp4", "")
+                with open(clean_video_filename + "_transcript.md", "w") as f:
                     f.write(corrected_trans)
 
                 st.download_button(
                     label="Download Transcript",
                     data=corrected_trans,
-                    file_name=video_filename + "_transcript.md",
+                    file_name=clean_video_filename + "_transcript.md",
                     mime="text/markdown",
                 )
 
