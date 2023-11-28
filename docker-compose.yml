@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
-    command: gunicorn T2TT.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn django.T2TT.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
       - static_volume:/code/static
@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:13
+    image: postgres:latest
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:

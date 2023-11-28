@@ -4,6 +4,7 @@ FROM python:3.9
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH /code:$PYTHONPATH
 
 # Set the working directory in the container
 WORKDIR /code
@@ -28,4 +29,4 @@ RUN python django/manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "T2TT.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "django.T2TT.wsgi:application"]

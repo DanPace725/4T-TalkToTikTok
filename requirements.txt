@@ -8,3 +8,4 @@ django
 regex
 psycopg
 psycopg2
+gunicorn
