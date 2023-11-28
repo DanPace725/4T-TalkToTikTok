@@ -6,3 +6,5 @@ Selenium
 Streamlit
 django
 regex
+psycopg
+psycopg2
