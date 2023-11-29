@@ -9,3 +9,10 @@ regex
 psycopg
 psycopg2
 gunicorn
+BeautifulSoup4
+#browser-cookie3
+Numpy
+Pandas
+webdriver-manager
+#git+https://github.com/DanPace725/pyktok.git
+

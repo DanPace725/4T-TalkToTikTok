@@ -10,10 +10,25 @@ ENV PYTHONPATH /code:$PYTHONPATH
 WORKDIR /code
 
 # Install system dependencies
-RUN apt-get update
+RUN apt-get update && apt-get install -y curl gnupg dbus
+
+# Install Google Chrome
+RUN curl --location --silent https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+ && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+ && apt-get update \
+ && apt-get install google-chrome-stable -y --no-install-recommends \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install ffmpeg for audio conversion
-RUN apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
+# Create the system bus socket
+RUN mkdir -p /run/dbus && touch /run/dbus/system_bus_socket
+
+
+# Set the DBUS_SESSION_BUS_ADDRESS environment variable
+ENV DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
 
 # Install Python dependencies
 COPY requirements.txt /code/

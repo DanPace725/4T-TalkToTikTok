@@ -25,7 +25,7 @@ from core.views import video_upload
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('download/', views.download_and_transcribe_view, name='download_and_transcribe_view'),
+    # path('download/', views.download_and_transcribe_view, name='download_and_transcribe_view'),
     path('', views.home_view, name='home_view'),
     path('success/', views.success_view, name='success'),
     path('error/', views.error_view, name='error'),

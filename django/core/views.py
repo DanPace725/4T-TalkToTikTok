@@ -6,15 +6,15 @@ from django.http import HttpResponse
 from django.core.files import File
 from django.http import HttpResponseRedirect
 from .models import VideoTranscription
-from .utils import download_video, convert_to_audio
+from .utils import  convert_to_audio 
 from .services import transcribe_audio
 from .forms import VideoForm
 from django.http import JsonResponse
 from django.urls import reverse
+# from .utils import download_video
 
 
-
-def download_and_transcribe_view(request):
+""" def download_and_transcribe_view(request):
     if request.method == 'POST':
         video_url = request.POST.get('video_url')
         
@@ -49,7 +49,7 @@ def download_and_transcribe_view(request):
         # Redirect to the transcript page instead of success page
         return redirect('transcript')
 
-    return render(request, 'download.html')
+    return render(request, 'download.html') """
 
 def display_transcription_view(request, video_transcription_id):
     video_transcription = VideoTranscription.objects.get(pk=video_transcription_id)
@@ -57,8 +57,6 @@ def display_transcription_view(request, video_transcription_id):
         'video_transcription': video_transcription
     }
     return render(request, 'display_transcription_template.html', context)
-
-
 
 def download_transcript_view(request, filename):
     latest_transcript = VideoTranscription.objects.latest('downloaded_at')
@@ -83,7 +81,6 @@ def download_transcript_view(request, filename):
     
     return response
 
-
 def home_view(request):
     return render(request, 'home.html')
 
@@ -99,6 +96,7 @@ def transcript_view(request):
         'transcript': latest_transcript
     }
     return render(request, 'transcript.html', context)
+
 def video_upload(request):
     if request.method == 'POST':
         form = VideoForm(request.POST, request.FILES)

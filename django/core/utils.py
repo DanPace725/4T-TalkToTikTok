@@ -1,13 +1,14 @@
 # core/utils.py
 
 # Import necessary modules
-from pyktok import save_tiktok
+#from pyktok import save_tiktok
 import regex as re
 import subprocess
 
 
+""" 
 def download_video(url):
-  """Download video from URL using pyktok"""
+  # Download video from URL using pyktok
   
   try:
     save_tiktok(url, True, "data.csv", "chrome")
@@ -17,6 +18,8 @@ def download_video(url):
   except (subprocess.CalledProcessError, FileNotFoundError) as e:
     error_string = (f"Failed to download video: {e}")
     return error_string
+     
+"""
   
 
 
