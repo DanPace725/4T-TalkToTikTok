@@ -1,60 +1,64 @@
+## Overview
 
----
+This Django project is a web application that enables users to upload videos for transcription using an AI service. Users can download the resulting transcriptions in a variety of formats.
 
-# 4T-TalkToTikTok
+## Getting Started
 
-4T-TalkToTikTok is a project that aims to transcribe audio from TikTok videos using the OpenAI Whisper model and then correct the transcriptions using the GPT-3.5-turbo model. It provides a user-friendly interface through Streamlit, allowing users to input a TikTok video URL and get the transcription in real-time.
+### Prerequisites
 
-## Features
+- Docker
+- Docker Compose
 
-- **Video Download**: Download TikTok videos using the provided URL.
-- **Audio Extraction**: Convert the downloaded video to audio format for transcription.
-- **Transcription**: Transcribe the audio using OpenAI's Whisper model.
-- **Correction**: Correct the transcription using the GPT-3.5-turbo model.
+### Setup
 
-## Installation
+#### Environment
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/DanPace725/4T-TalkToTikTok.git
-   ```
+To set up the application, ensure Docker and Docker Compose are installed on your system. Docker containers will encapsulate the application and its services, while Docker Compose orchestrates the containers.
 
-2. Navigate to the project directory:
-   ```
-   cd 4T-TalkToTikTok
-   ```
+Create a `.env` file in the project root with the following content:
 
-3. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+```
+DEBUG=1
+SECRET_KEY=your_secret_key
+DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
+```
 
-4. Set up the OpenAI API key as an environment variable:
-   ```
-   export OPENAI_API_KEY='your_api_key_here'
-   ```
+#### Running the Application
 
-5. Ensure you have `ffmpeg` installed and accessible from the command line. If you're not sure how to do this you can check out this link [here](https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/). 
+1. Build the Docker image:
+   `docker-compose build`
+2. Start the services:
+   `docker-compose up`
+3. Access the application at http://localhost:8000.
+4. To stop and remove the containers:
+   `docker-compose down`
 
-## Usage
+#### Database
 
-1. Start the Streamlit app:
-   ```
-   streamlit run src/app.py
-   ```
+The application uses PostgreSQL, which is defined in the `docker-compose.yml` file. Use environment variables to override the default configurations.
 
-2. Open the provided link in your browser.
+#### Static Files
 
-3. Input a TikTok video URL and click on "Transcribe" to get the transcription.
+Collect static files in the `staticfiles` directory with:
+`docker-compose run web python manage.py collectstatic`
 
-4. Click on "Download Transcript" to download the transcript in Markdown.
+#### Migrations
 
-## Contributing
+Apply database migrations with:
+`docker-compose run web python manage.py migrate`
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+#### Admin Interface
+
+Create a superuser to access the Django admin at http://localhost:8000/admin:
+`docker-compose run web python manage.py createsuperuser`
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT License - see the LICENSE file for details.
 
----
+## Acknowledgments
+
+- Docker Hub for the official Python Docker image.
+- PostgreSQL for the database image.
+
+Refer to the project repository for more details on structure and configurations.
