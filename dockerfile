@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONPATH /code:$PYTHONPATH
 
+RUN pip install --upgrade pip
+
 # Set the working directory in the container
 WORKDIR /code
 
